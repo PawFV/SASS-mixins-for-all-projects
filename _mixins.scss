@@ -1,0 +1,28 @@
+@mixin flexCenter($justify: center, $align: false, $direction: false) {
+  display: flex;
+  justify-content: $justify;
+
+  @if $direction {
+    flex-direction: column;
+  }
+  @if not $align {
+    align-items: center;
+  }
+  @if $align {
+    align-items: $align;
+  }
+}
+
+@mixin centerAbsolute($top: 50%, $left: 50%) {
+  position: absolute;
+  top: $top;
+  left: $left;
+  transform: translate(-50%, -50%);
+}
+
+@mixin bgImg($imgUrl, $position: center) {
+  background-image: url('#{$imgUrl}');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: $position;
+}

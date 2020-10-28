@@ -1,25 +1,41 @@
-@mixin flexCenter($justify: center, $align: false, $direction: false) {
+/**
+  * Sets display flex
+  * Defaults: justify-content: center, align-items: center, flex-direction: row
+  * @param $justify - justify-content
+  * @param $align - align-items
+  * @param $direction - flex-direction
+*/
+@mixin flex($justify: center, $align: false, $direction: false) {
   display: flex;
   justify-content: $justify;
 
   @if $direction {
     flex-direction: column;
   }
-  @if not $align {
-    align-items: center;
-  }
   @if $align {
     align-items: $align;
   }
+  @if not $align {
+    align-items: center;
+  }
 }
 
-@mixin centerAbsolute($top: 50%, $left: 50%) {
+/**
+  * Sets absolute position, must declare relative on parent element
+*/
+@mixin posAbsolute($top: 50%, $left: 50%) {
   position: absolute;
   top: $top;
   left: $left;
   transform: translate(-50%, -50%);
 }
 
+/**
+  * Sets background-image with no-repeat and cover. 
+  * Defaults: background-position: center
+  * @param $imgUrl - image valid path ie: './assets/img.png' 
+  * @param $position - background-position
+*/
 @mixin bgImg($imgUrl, $position: center) {
   background-image: url('#{$imgUrl}');
   background-repeat: no-repeat;
